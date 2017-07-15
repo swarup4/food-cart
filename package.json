@@ -1,0 +1,31 @@
+{
+  "name": "shoping-cart",
+  "version": "1.0.0",
+  "description": "Basic Shoping Cart Web Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swarup4/shoping-cart.git"
+  },
+  "keywords": [
+    "Shoping-Cart",
+    "MEAN"
+  ],
+  "author": "Swarup Saha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swarup4/shoping-cart/issues"
+  },
+  "homepage": "https://github.com/swarup4/shoping-cart#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "mongoose": "^4.11.3",
+    "nodemon": "^1.11.0",
+    "ws": "^3.0.0"
+  }
+}
