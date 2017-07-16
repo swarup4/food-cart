@@ -4,15 +4,17 @@
   "description": "Basic Shoping Cart Web Application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "lessc app/css/*.less app/css/style.css",
+    "serve": "nodemon server.js",
+    "start": "concurrently \"npm run build\" \"npm run serve\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/swarup4/shoping-cart.git"
   },
   "keywords": [
-    "Shoping-Cart",
-    "MEAN"
+    "Shoping-Cart", "MEAN"
   ],
   "author": "Swarup Saha",
   "license": "ISC",
@@ -24,8 +26,12 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "jsonwebtoken": "^7.4.1",
+    "less": "^2.7.2",
     "mongoose": "^4.11.3",
     "nodemon": "^1.11.0",
     "ws": "^3.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
   }
 }

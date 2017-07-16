@@ -4,7 +4,7 @@ let path = require("path");
 
 let abspath = path.join(__dirname + "../../app");
 
-router.get("/", function(req, res, next){
+router.get("/", (req, res, next) => {
     console.log(abspath);
     res.sendFile(abspath);
 });
