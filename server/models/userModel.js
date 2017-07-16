@@ -1,7 +1,10 @@
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 let objectId = Schema.ObjectId;
+let users = {};
 
+
+//User Auth Model
 let user = {
     _id: { type: objectId, auto: true },
     name: { type: String, required: true },
@@ -15,6 +18,23 @@ let user = {
     }],
     status: { type: Boolean, default: 1 }
 }
-
 let userSchema = new Schema(user, { versionKey: false });
-let user = mongoose.model("user", userSchema);
+users.auth = mongoose.model("user", userSchema);
+
+
+//User Detals Model
+let userDetails = {
+    _id: { type: objectId, auto: true },
+    profilePics: String,
+    wallet:Number,
+    gender: String,
+    address: String,
+    state: String,
+    country: String,
+    zip: String,
+}
+
+let userDetailsSchema = new Schema(userDetails, { versionKey: false });
+users.details = mongoose.model("userDetails", userDetailsSchema);
+
+module.exports = users;

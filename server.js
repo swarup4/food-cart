@@ -12,10 +12,7 @@ mongoose.connect('mongodb://localhost/shoping', (err) => {
     console.log("Error : " + err);
 });
 
-let abspath = __dirname + "/app";
-
 app.use(express.static(__dirname));
-app.use(express.static(abspath));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -2,9 +2,7 @@
   "name": "shoping-cart",
   "description": "Basic Shoping Cart Web Application",
   "main": "server.js",
-  "authors": [
-    "Swarup Saha"
-  ],
+  "author": "Swarup Saha",
   "license": "ISC",
   "keywords": [
     "Shoping-Cart",
