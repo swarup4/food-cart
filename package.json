@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/swarup4/shoping-cart#readme",
   "dependencies": {
-    "angular": "^1.6.5",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "jsonwebtoken": "^7.4.1",

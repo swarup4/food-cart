@@ -8,9 +8,9 @@ let apiRoute = require("./server/router/api.js");
 let app = express();
 let port = process.env.port || 3000;
 
-mongoose.connect('mongodb://localhost/shoping', (err) => {
-    console.log("Error : " + err);
-});
+// mongoose.connect('mongodb://localhost/shoping', (err) => {
+//     console.log("Error : " + err);
+// });
 
 app.use(express.static(__dirname));
 
