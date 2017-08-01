@@ -4,7 +4,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('login', {
         url: '/',
         templateUrl: './app/modules/login/login.html', 
-        //controller: 'shopingCtrl'
+        controller: 'loginCtrl'
     });
     $urlRouterProvider.otherwise("/");
 });

@@ -7,7 +7,7 @@ class ShopingFactory {
         return lname;
     }
 }
-ShopingCtrl.$inject = ['$http', '$q'];
-//export default ShopingCtrl;
+ShopingFactory.$inject = ['$http', '$q'];
+//export default ShopingFactory;
 
 app.factory("shopingFactory", ShopingFactory);
