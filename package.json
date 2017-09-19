@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/swarup4/shoping-cart#readme",
   "dependencies": {
+    "angular": "^1.6.6",
+    "angular-ui-router": "^1.0.3",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "jsonwebtoken": "^7.4.1",
@@ -33,6 +35,17 @@
     "ws": "^3.0.0"
   },
   "devDependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.5.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "browserify-ngannotate": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-clean-css": "^3.8.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
