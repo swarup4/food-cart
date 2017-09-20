@@ -1,22 +1,13 @@
-//var app = angular.module('ShopingCart', ['ngMaterial', 'ui.router']);
-
-// app.config(function ($stateProvider, $urlRouterProvider) {
-//     $stateProvider.state('login', {
-//         url: '/',
-//         templateUrl: './app/modules/login/login.html', 
-//         controller: 'loginCtrl'
-//     });
-//     $urlRouterProvider.otherwise("/");
-// });
-
 import angular from 'angular';
 import 'angular-ui-router';
-import LoginController from '../app/modules/login/loginController';
-//import HomeFactory from '../app/home/services/homeFactory';
-//import config from '../app/config';
+import 'angular-material'
 
-var app = angular.module('ShopingCart', ['ui.router']);
+import LoginController from './modules/login/loginController';
+import LoginService from './modules/login/loginService';
+import config from './config';
 
-//app.config(config);
+var app = angular.module('ShopingCart', ['ui.router', 'ngMaterial']);
+
+app.config(config);
 app.controller("loginController", LoginController);
-//app.service("homeFactory", HomeFactory);
+app.service("loginService", LoginService);

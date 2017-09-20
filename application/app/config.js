@@ -1,11 +1,8 @@
-import angular from 'angular';
-import 'angular-ui-router';
-
 function Config($stateProvider, $urlRouterProvider){
     $stateProvider.state('home', {
         url: '/',
-        templateUrl: './home/index.html',
-        controller: 'homeController'
+        templateUrl: './application/app/modules/login/login.html',
+        controller: 'loginController'
     });
     $urlRouterProvider.otherwise("/");
 }

@@ -1,21 +1,10 @@
-//import homeFactory from "./../services/homeFactory"
+import loginService from "./loginService";
+
 class LoginController {
-  constructor(scope) {
-    scope.fname = "Swarup";
-    //scope.lname = shopingFactory.getLastName();
+  constructor($scope, loginService) {
+    $scope.fname = "Swarup";
+    $scope.lname = loginService.getLastName();
   }
 }
-LoginController.ngInject = ['$scope'];
+LoginController.ngInject = ['$scope', 'loginService'];
 export default LoginController;
-
-//app.controller("loginCtrl", LoginController);
-
-// import homeFactory from "./../services/homeFactory"
-// class HomeController {
-//   constructor($scope,homeFactory) {
-//     $scope.fname = homeFactory.getFirstName();
-//     $scope.lname = homeFactory.getLastName();
-//   }
-// }
-// export default HomeController;
-// HomeController.ngInject = ['$scope', 'homeFactory'];
