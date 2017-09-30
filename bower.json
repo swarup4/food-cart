@@ -21,7 +21,6 @@
     "angular": "^1.6.5",
     "bootstrap": "^3.3.7",
     "jquery": "^3.2.1",
-    "angular-material": "^1.1.4",
-    "traceur": "^0.0.111"
+    "angular-material": "^1.1.4"
   }
 }
