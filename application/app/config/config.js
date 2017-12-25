@@ -1,4 +1,4 @@
-import httpError from './httpError';
+import authIntercept from './authInterceptor';
 
 let Config = ($stateProvider, $urlRouterProvider, $httpProvider) => {
     $stateProvider.state('login', {
@@ -15,7 +15,7 @@ let Config = ($stateProvider, $urlRouterProvider, $httpProvider) => {
     });
     $urlRouterProvider.otherwise("/");
 
-    $httpProvider.interceptors.push('httpError');
+    $httpProvider.interceptors.push('authIntercept');
 }
 
 Config.ngInject = ['$stateProvider', '$urlRouterProvider', '$httpProvider'];
