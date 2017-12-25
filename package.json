@@ -25,6 +25,10 @@
   "homepage": "https://github.com/swarup4/shoping-cart#readme",
   "dependencies": {
     "angular": "^1.6.6",
+    "angular-animate": "^1.6.8",
+    "angular-aria": "^1.6.8",
+    "angular-material": "^1.1.5",
+    "angular-messages": "^1.6.8",
     "angular-ui-router": "^1.0.3",
     "body-parser": "^1.18.1",
     "express": "^4.15.3",

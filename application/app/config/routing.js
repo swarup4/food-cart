@@ -1,7 +1,7 @@
 class Routes{
     constructor(){
         // let apiUrl = "http://localhost:3001/api";
-        let apiUrl = "http://localhost:3000/employees";
+        let apiUrl = "http://localhost:3000/employee";
         this.getAllOrderDetails = apiUrl;
         // this.getAllOrderDetails = apiUrl + "/allOrder";
         this.getUserOrderDetails = apiUrl + "/allOrder?id=";

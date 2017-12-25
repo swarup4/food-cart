@@ -1,6 +1,8 @@
 import angular from 'angular';
 import 'angular-ui-router';
-// import 'angular-material'
+import 'angular-animate';
+import 'angular-aria';
+import 'angular-material';
 
 import mainService  from './main.service';
 import mainController  from './main.controller';
@@ -11,7 +13,7 @@ import config from './config/config';
 import AuthIntercept from './config/authInterceptor';
 //import run from './config/run';
 
-var app = angular.module('ShopingCart', ['ui.router', mainController, mainService, mainDirective]);
+var app = angular.module('ShopingCart', ['ui.router', 'ngMaterial', mainController, mainService, mainDirective]);
 
 // app.constant("apiUrl", 'http://localhost:3001/api');
 

@@ -1,13 +1,18 @@
 import loginService from "../modules/login/login.service";
+// import HttpError from "./httpError";
 
 let data = {};
+let rootScope;
+// let errorList = {};
 
-class AuthIntercept extends loginService{
-    constructor(){
+class AuthIntercept extends loginService {
+    constructor($rootScope) {
         super();
         data.userDetails = this.getUserDetails();
+        console.log($rootScope);
+        rootScope = $rootScope;
     }
-    request(config){
+    request(config) {
         let currentUser = data.userDetails;
         let accessToken = currentUser ? currentUser.token : null;
         if (accessToken) {
@@ -15,21 +20,26 @@ class AuthIntercept extends loginService{
         }
         return config;
     }
-    requestError(config){
-        console.log();
+    requestError(config) {
+        debugger;
+        rootScope.msg = "Error";
+        console.log(errorList.error);
         return config;
     }
-    response(res){
+    response(res) {
         console.log(res);
         return res;
     }
-    responseError(res){
-        console.log(res);
+    responseError(res) {
+        debugger;
+        rootScope.msg = "Error";
+        console.log(errorList.error);
         return res;
     }
-    static callFactory(){
-        return new AuthIntercept();
+    static callFactory($rootScope) {
+        return new AuthIntercept($rootScope);
     }
 }
 
+AuthIntercept.ngInject = ['$rootScope'];
 export default AuthIntercept.callFactory;
