@@ -1,4 +1,6 @@
-let Config = ($stateProvider, $urlRouterProvider) => {
+import httpError from './httpError';
+
+let Config = ($stateProvider, $urlRouterProvider, $httpProvider) => {
     $stateProvider.state('login', {
         url: '/',
         templateUrl: './application/app/modules/login/login.html',
@@ -12,8 +14,10 @@ let Config = ($stateProvider, $urlRouterProvider) => {
         controllerAs: "scope"
     });
     $urlRouterProvider.otherwise("/");
+
+    $httpProvider.interceptors.push('httpError');
 }
 
-Config.ngInject = ['$stateProvider', '$urlRouterProvider'];
+Config.ngInject = ['$stateProvider', '$urlRouterProvider', '$httpProvider'];
 
 export default Config;

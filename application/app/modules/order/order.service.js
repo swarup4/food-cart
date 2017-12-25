@@ -7,20 +7,22 @@ class OrderServices {
     }
     getAllOrders(){
         let deferred = this.q.defer();
-        this.http.get(this.routes.getAllOrderDetails).then(function(success){
+        this.http.get(this.routes.getAllOrderDetails).then(success => {
             deferred.resolve(success);
-        }, function(error){
+        }, error => {
             deferred.reject(error);
         });
+        return deferred.promise;
     }
 
     getUserOrders(userId){
         let deferred = this.q.defer();
-        this.http.get(this.routes.getUserOrderDetails + userId).then(function(success){
+        this.http.get(this.routes.getUserOrderDetails + userId).then(success => {
             deferred.resolve(success);
-        }, function(error){
+        }, error => {
             deferred.reject(error);
         });
+        return deferred.promise;
     }
 }
 

@@ -6,7 +6,7 @@ let route = require("./server/router/web.js");
 let apiRoute = require("./server/router/api.js");
 
 let app = express();
-let port = process.env.port || 3000;
+let port = process.env.port || 3001;
 
 // mongoose.connect('mongodb://localhost/shoping', (err) => {
 //     console.log("Error : " + err);
