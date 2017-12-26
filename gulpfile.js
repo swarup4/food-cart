@@ -7,6 +7,7 @@ var babelify = require('babelify');
 var babel = require('gulp-babel');
 var source = require('vinyl-source-stream');
 var ngAnnotate = require("browserify-ngannotate");
+var less = require('gulp-less');
 
 
 gulp.task('compile', () => {
@@ -18,16 +19,17 @@ gulp.task('compile', () => {
     .pipe(gulp.dest('./application/app/build/script/'));
 })
 
-// gulp.task('minifyCss', () => {
-//     gulp.src('app/css/*.css')
-//         .pipe(concat('style.css'))
-//         .pipe(cleanCss())
-//         .pipe(gulp.dest('app/build/style/'));
-// });
+gulp.task('compileCss', () => {
+    gulp.src('./application/app/public/style/*.less')
+        .pipe(less())
+        .pipe(concat('style.css'))
+        // .pipe(cleanCss())
+        .pipe(gulp.dest('./application/app/public/css/'));
+});
 
 gulp.task('watch', () => {
     gulp.watch('./application/app/**/*.js', function(){
         gulp.run('compile');
     });    
 });
-//gulp.task('build', ['minifyJs', 'minifyCss']);
+gulp.task('build', ['compile', 'compileCss']);

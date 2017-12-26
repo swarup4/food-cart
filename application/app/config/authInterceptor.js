@@ -21,9 +21,7 @@ class AuthIntercept extends loginService {
         return config;
     }
     requestError(config) {
-        debugger;
-        rootScope.msg = "Error";
-        console.log(errorList.error);
+        rootScope.callErrorMessage(config);
         return config;
     }
     response(res) {
@@ -31,9 +29,7 @@ class AuthIntercept extends loginService {
         return res;
     }
     responseError(res) {
-        debugger;
-        rootScope.msg = "Error";
-        console.log(errorList.error);
+        rootScope.callErrorMessage(res);
         return res;
     }
     static callFactory($rootScope) {
