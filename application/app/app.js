@@ -11,7 +11,7 @@ import mainDirective  from './main.directive';
 import  Routes from './config/routing';
 import config from './config/config';
 import AuthIntercept from './config/authInterceptor';
-//import run from './config/run';
+import run from './config/run';
 
 var app = angular.module('ShopingCart', ['ui.router', 'ngMaterial', mainController, mainService, mainDirective]);
 
@@ -20,4 +20,4 @@ var app = angular.module('ShopingCart', ['ui.router', 'ngMaterial', mainControll
 app.factory("routes", Routes);
 app.factory("authIntercept", AuthIntercept);
 app.config(config);
-//app.run(run);
+app.run(run);

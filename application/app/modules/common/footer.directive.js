@@ -7,7 +7,6 @@ class FooterDirective{
     controller($scope, $rootScope, $mdToast){
         $scope.lname = "Saha";
         $rootScope.callErrorMessage = (error) => {
-            debugger;
             $scope.openErrorTost();
         }
         $scope.openErrorTost = () => {

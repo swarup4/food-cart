@@ -23,6 +23,9 @@ class OrderController{
             console.log(err);
         })
     }
+    setAuth(){
+        this.orderService.setAuthName("Swarup");
+    }
 }
 
 OrderController.$inject = ['$scope', '$rootScope', 'orderService'];

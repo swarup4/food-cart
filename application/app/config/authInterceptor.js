@@ -9,7 +9,6 @@ class AuthIntercept extends loginService {
     constructor($rootScope) {
         super();
         data.userDetails = this.getUserDetails();
-        console.log($rootScope);
         rootScope = $rootScope;
     }
     request(config) {
@@ -25,7 +24,6 @@ class AuthIntercept extends loginService {
         return config;
     }
     response(res) {
-        console.log(res);
         return res;
     }
     responseError(res) {

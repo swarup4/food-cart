@@ -31,8 +31,8 @@ let Config = ($stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvi
     $httpProvider.interceptors.push('authIntercept');
     // $mdThemingProvider.disableTheming();
     $mdThemingProvider.theme('teal')
-      .primaryPalette('green')
-      .accentPalette('red');
+        .primaryPalette('green')
+        .accentPalette('red');
 }
 
 Config.ngInject = ['$stateProvider', '$urlRouterProvider', '$httpProvider', '$mdThemingProvider'];

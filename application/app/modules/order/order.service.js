@@ -24,6 +24,9 @@ class OrderServices {
         });
         return deferred.promise;
     }
+    setAuthName(name){
+        this.authName = name;
+    }
 }
 
 OrderServices.$inject = ['$http', '$q', 'routes'];
