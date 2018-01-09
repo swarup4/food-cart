@@ -72,13 +72,6 @@ footer.page-footer {
 input[type="text"]:focus:not([readonly]) {
   border-color: #C00;
   box-shadow: 0 1px 0 0 #C00;
-  color: #fff;
-}
-input[type="text"]:not([readonly]) + label {
-  color: rgba(255, 255, 255, 0.65);
-}
-input[type="text"]:focus:not([readonly]) + label {
-  color: #fff;
 }
 .navbar .btn-group .dropdown-menu a:hover {
   color: #000 !important;

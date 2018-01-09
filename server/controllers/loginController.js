@@ -8,8 +8,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
+    console.log(req.body);
     var obj = req.body;
-    var model = new user(obj);
+    var model = new user.auth(obj);
+    console.log(model);
     // model.save(function(err) {
     //     if (err) {
     //         res.send("error");
