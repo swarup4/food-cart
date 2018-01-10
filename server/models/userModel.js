@@ -19,7 +19,7 @@ let user = {
     status: { type: Boolean, default: 1 }
 }
 let userSchema = new Schema(user, { versionKey: false });
-users.auth = mongoose.model("user", userSchema);
+users.Auth = mongoose.model("user", userSchema);
 
 
 //User Detals Model
@@ -35,6 +35,6 @@ let userDetails = {
 }
 
 let userDetailsSchema = new Schema(userDetails, { versionKey: false });
-users.details = mongoose.model("userDetails", userDetailsSchema);
+users.Details = mongoose.model("userDetails", userDetailsSchema);
 
 module.exports = users;
