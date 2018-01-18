@@ -11,6 +11,7 @@ let port = process.env.port || 3001;
 mongoose.connect('mongodb://localhost/shoping', { useMongoClient: true }, (err) => {
     console.log("Error : " + err);
 });
+mongoose.Promise = global.Promise;
 
 app.use(express.static(__dirname));
 

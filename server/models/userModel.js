@@ -12,10 +12,10 @@ let user = {
     password: { type: String, required: true },
     contactNo: { type: Number, required: true },
     email: { type: String, unique: true, required: true },
-    tokens: [{
-        access: { type: String, required: true },
-        token: { type: String, required: true }
-    }],
+    // tokens: [{
+    //     access: { type: String, required: true },
+    //     token: { type: String, required: true }
+    // }],
     status: { type: Boolean, default: 1 }
 }
 let userSchema = new Schema(user, { versionKey: false });
