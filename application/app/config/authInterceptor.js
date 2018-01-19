@@ -14,7 +14,7 @@ class AuthIntercept {
             currentUser = JSON.parse(sessionStorage.userDetails);
             accessToken = currentUser ? currentUser.token : null;
             if (accessToken) {
-                config.headers.authorization = accessToken;
+                config.headers.authtoken = accessToken;
             }
         }
         return config;

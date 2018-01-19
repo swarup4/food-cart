@@ -19,33 +19,34 @@ app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(route);
+app.use(route);     // Web Route
+app.use(apiRoute.users);    // User Router (Token Is Not Required)
 
-// app.use(function (req, res, next) {
-//     // check header or url parameters or post parameters for token
-//     var token = req.body.token || req.query.token || req.headers['x-access-token'];
-//     // decode token
-//     if (token) {
-//         // verifies secret and checks exp
-//         jwt.verify(token, 'shhhhh', function (err, decoded) {
-//             if (err) {
-//                 return res.json({ success: false, message: 'Failed to authenticate token.' });
-//             } else {
-//                 // if everything is good, save to request for use in other routes
-//                 console.log(decoded);
-//                 req.decoded = decoded;
-//                 next();
-//             }
-//         });
-//     } else {
-//         return res.status(403).send({
-//             success: false,
-//             message: 'No token provided.'
-//         });
-//     }
-// });
+app.use(function (req, res, next) {
+    // check header or url parameters or post parameters for token
+    var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers.authtoken;
+    // decode token
+    if (token) {
+        // verifies secret and checks exp
+        jwt.verify(token, 'shhhhh', function (err, decoded) {
+            if (err) {
+                return res.json({ success: false, message: 'Failed to authenticate token.' });
+            } else {
+                // if everything is good, save to request for use in other routes
+                console.log(decoded);
+                req.decoded = decoded;
+                next();
+            }
+        });
+    } else {
+        return res.status(403).send({
+            success: false,
+            message: 'No token provided.'
+        });
+    }
+});
 
-app.use(apiRoute);
+// app.use(apiRoute.order);
 
 
 app.listen(port, () => {

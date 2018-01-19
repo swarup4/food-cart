@@ -1,9 +1,11 @@
 let express = require("express");
-let router = express.Router();
-let path = require("path");
+let loginRouter = express.Router();
+let orderRouter = express.Router();
 
 let loginController = require("../controllers/loginController.js");
 
-router.use("/api/login", loginController);
+let apiRouteObj = {};
 
-module.exports = router;
+apiRouteObj.users = loginRouter.use("/api/login", loginController);
+
+module.exports = apiRouteObj;
