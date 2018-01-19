@@ -3,9 +3,11 @@ let loginRouter = express.Router();
 let orderRouter = express.Router();
 
 let loginController = require("../controllers/loginController.js");
+let orderController = require("../controllers/orderController.js");
 
-let apiRouteObj = {};
+loginRouter.use("/api/login", loginController);
 
-apiRouteObj.users = loginRouter.use("/api/login", loginController);
+orderRouter.use("/api/order", orderController);
 
-module.exports = apiRouteObj;
+module.exports.users = loginRouter;
+module.exports.order = orderRouter;
