@@ -8,6 +8,9 @@ class Routes{
         
         // Signup Urls
         this.signupUrl = apiUrl + "/login/signup";
+
+        // Login Urls
+        this.loginUrl = apiUrl + "/login/login";
     }
     static callFactory(){
         return new Routes();

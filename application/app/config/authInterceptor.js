@@ -1,21 +1,21 @@
-import loginService from "../modules/login/login.service";
 // import HttpError from "./httpError";
 
 let data = {};
 let rootScope;
 // let errorList = {};
 
-class AuthIntercept extends loginService {
+class AuthIntercept {
     constructor($rootScope) {
-        super();
-        data.userDetails = this.getUserDetails();
         rootScope = $rootScope;
     }
     request(config) {
-        let currentUser = data.userDetails;
-        let accessToken = currentUser ? currentUser.token : null;
-        if (accessToken) {
-            config.headers.authorization = accessToken;
+        let currentUser, accessToken;
+        if(sessionStorage.userDetails != undefined){
+            currentUser = JSON.parse(sessionStorage.userDetails);
+            accessToken = currentUser ? currentUser.token : null;
+            if (accessToken) {
+                config.headers.authorization = accessToken;
+            }
         }
         return config;
     }

@@ -1,7 +1,9 @@
+import routes from "../../config/routing";
 class LoginService {
-    constructor($http) {
+    constructor($http, $q, routes) {
         this.http = $http;
-        // this.q = $q;
+        this.q = $q;
+        this.routes = routes;
     }
     getLastName() {
         let lname = "Saha";
@@ -12,12 +14,18 @@ class LoginService {
         return fname;
     }
     getUserDetails(){
-        let user = {};
-        user.token = btoa("Swarup7");
-        user.username = "Swarup7";
-        user.userId = 2346662;
-        return user;
+        var data = { 
+            username: 'Swarup007', 
+            password: 'Swarup123' 
+        };
+        let deferred = this.q.defer();
+        this.http.post(this.routes.loginUrl, data).then(success => {
+            deferred.resolve(success);
+        }, error => {
+            deferred.reject(error);
+        });
+        return deferred.promise;
     }
 }
-LoginService.ngInject = ['$http'];
+LoginService.ngInject = ['$http', '$q', 'routes'];
 export default LoginService;

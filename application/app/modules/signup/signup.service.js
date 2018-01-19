@@ -8,7 +8,6 @@ class SignupServices {
     signupUser(data){
         let deferred = this.q.defer();
         this.http.post(this.routes.signupUrl, data).then(success => {
-            debugger;
             deferred.resolve(success);
         }, error => {
             deferred.reject(error);

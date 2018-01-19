@@ -1,25 +1,33 @@
 import 'angular-ui-router';
 
 import orderService from "../modules/order/order.service";
+import loginService from "../modules/login/login.service";
 
-let Run = ($rootScope, $location, $transitions, orderService) => {
+let Run = ($rootScope, $location, $transitions, orderService, loginService) => {
+
+    loginService.getUserDetails().then(success => {
+        sessionStorage.userDetails = JSON.stringify(success.data);
+    }, error => {
+        console.log(error);
+    });
+
     $transitions.onStart({}, ($transitions) => {
         let fromState = $transitions.$from();
         let toState = $transitions.$to();
         console.log(fromState + " " + toState);
-        if (orderService.authName == "Swarup") {
-            if (toState.name == "login") {
-                return $transitions.router.stateService.target(fromState.name);
-            }
-        }else{
-            if(toState == "login" || toState == "signup" || toState == "home"){
-                return true;
-            }else{
-                return $transitions.router.stateService.target("login");
-            }            
-        }
+        // if (orderService.authName == "Swarup") {
+        //     if (toState.name == "login") {
+        //         return $transitions.router.stateService.target(fromState.name);
+        //     }
+        // }else{
+        //     if(toState == "login" || toState == "signup" || toState == "home"){
+        //         return true;
+        //     }else{
+        //         return $transitions.router.stateService.target("login");
+        //     }            
+        // }
     });
 }
 
-Run.$inject = ['$rootScope', '$location', '$transitions', 'orderService'];
+Run.$inject = ['$rootScope', '$location', '$transitions', 'orderService', 'loginService'];
 export default Run;

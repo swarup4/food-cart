@@ -6,7 +6,6 @@ class SignupController {
     this.signupService = signupService;
   }
   signUp(userData){
-    debugger;
     console.log(userData);
     this.signupService.signupUser(userData).then(success => {
       console.log(success);
