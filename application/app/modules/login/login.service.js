@@ -13,13 +13,18 @@ class LoginService {
         let fname = "Swarup";
         return fname;
     }
-    getUserDetails(){
-        var data = { 
-            username: 'Swarup007', 
-            password: 'Swarup123' 
-        };
+    getUsers(data){
         let deferred = this.q.defer();
         this.http.post(this.routes.loginUrl, data).then(success => {
+            deferred.resolve(success);
+        }, error => {
+            deferred.reject(error);
+        });
+        return deferred.promise;
+    }
+    getUserDetails(data){
+        let deferred = this.q.defer();
+        this.http.get(this.routes.userDetails + data).then(success => {
             deferred.resolve(success);
         }, error => {
             deferred.reject(error);

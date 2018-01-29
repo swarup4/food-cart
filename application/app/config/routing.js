@@ -11,6 +11,9 @@ class Routes{
 
         // Login Urls
         this.loginUrl = apiUrl + "/login/login";
+
+        // User Details
+        this.userDetails = apiUrl + "/login/userDetails?userId=";
     }
     static callFactory(){
         return new Routes();

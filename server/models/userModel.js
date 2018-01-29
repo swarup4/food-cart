@@ -12,6 +12,7 @@ let user = {
     password: { type: String, required: true },
     contactNo: { type: Number, required: true },
     email: { type: String, unique: true, required: true },
+    varifyCode: Number,
     // tokens: [{
     //     access: { type: String, required: true },
     //     token: { type: String, required: true }
@@ -25,13 +26,14 @@ users.Auth = mongoose.model("user", userSchema);
 //User Detals Model
 let userDetails = {
     _id: { type: objectId, auto: true },
+    userId: { type: objectId, required: true },
     profilePics: String,
-    wallet:Number,
+    wallet: Number,
     gender: String,
     address: String,
     state: String,
     country: String,
-    zip: String,
+    zip: Number,
 }
 
 let userDetailsSchema = new Schema(userDetails, { versionKey: false });

@@ -19,6 +19,12 @@ let Config = ($stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvi
         controller: 'signupController',
         controllerAs: "scope"
     });
+    $stateProvider.state('userDetails', {
+        url: 'userdetails',
+        templateUrl: './application/app/modules/user/userInfo.html',
+        controller: 'userController',
+        controllerAs: "scope"
+    });
     $stateProvider.state('order', {
         parent: 'home',
         url: 'order',

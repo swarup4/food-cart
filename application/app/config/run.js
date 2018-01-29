@@ -5,13 +5,8 @@ import loginService from "../modules/login/login.service";
 
 let Run = ($rootScope, $location, $transitions, orderService, loginService) => {
 
-    loginService.getUserDetails().then(success => {
-        sessionStorage.userDetails = JSON.stringify(success.data);
-    }, error => {
-        console.log(error);
-    });
-
     $transitions.onStart({}, ($transitions) => {
+        debugger;
         let fromState = $transitions.$from();
         let toState = $transitions.$to();
         console.log(fromState + " " + toState);
