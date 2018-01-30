@@ -22,19 +22,37 @@ router.get("/", (req, res) => {
 // Create New User 
 router.post("/signup", (req, res) => {
     let obj = req.body;
-    let model = new User.Auth(obj);
-    model.password = jwt.sign(obj.password, 'shhhhh');
-    model.save((err, user) => {
+    let user = User.Auth;
+    user.findOne({ $or: [{ username: obj.username }, { email: obj.email }] }, (err, data) => {
         if (err) {
             res.send(err);
-            return;
         } else {
-            console.log("Success");
-            // user.password = "";
-            let decoded = jwt.verify(user.password, 'shhhhh');
-            res.send(user);
+            if (data) {
+                let emailMsg = "", userMsg = "";
+                console.log(data);
+                if(data.email == obj.email){
+                    emailMsg = "Email is Already Exist";
+                }
+                if(data.username == obj.username){
+                    userMsg = "Username is Already Exist";
+                }
+                res.send(emailMsg + " " + userMsg);
+            } else {
+                let model = new User.Auth(obj);
+                model.password = jwt.sign(obj.password, 'shhhhh');
+                model.save((err, user) => {
+                    if (err) {
+                        res.send(err);
+                        return;
+                    } else {
+                        console.log("Success");
+                        let decoded = jwt.verify(user.password, 'shhhhh');
+                        res.send(user);
+                    }
+                });
+            }
         }
-    });
+    })
 });
 
 // Check Username for User is Exist or Not. & Also Check User Status.
@@ -125,7 +143,7 @@ router.post("/login", (req, res) => {
 // Params Or Object : Username & Varification Code
 router.post("/varificationCode", (req, res) => {
     let obj = req.body;
-    
+
     model.findOneAndUpdate((err, user) => {
         if (err) {
             res.send(err);
