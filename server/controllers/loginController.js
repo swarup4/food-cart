@@ -1,5 +1,8 @@
 let express = require("express");
+let path = require("path");
 let jwt = require("jsonwebtoken");
+let fs = require('fs');
+let multer = require('multer');
 let User = require("../models/userModel");
 
 let router = express.Router();
@@ -20,6 +23,7 @@ router.get("/", (req, res) => {
 });
 
 // Create New User 
+// Params Or Object : Name, Username, Password, Email, contactNo
 router.post("/signup", (req, res) => {
     let obj = req.body;
     let user = User.Auth;
@@ -29,11 +33,10 @@ router.post("/signup", (req, res) => {
         } else {
             if (data) {
                 let emailMsg = "", userMsg = "";
-                console.log(data);
-                if(data.email == obj.email){
+                if (data.email == obj.email) {
                     emailMsg = "Email is Already Exist";
                 }
-                if(data.username == obj.username){
+                if (data.username == obj.username) {
                     userMsg = "Username is Already Exist";
                 }
                 res.send(emailMsg + " " + userMsg);
@@ -171,15 +174,47 @@ router.post("/validateUser", (req, res) => {
 // Insert Logged in User Details
 router.post("/insertUserDetails", (req, res) => {
     let obj = req.body;
+
     let model = new User.Details(obj);
     model.save((err, user) => {
         if (err) {
             res.send(err);
         } else {
-            console.log("User Data Inserted")
-            res.send(user);
+            console.log("User Data Inserted");
+            res.send("Success");
         }
     })
+})
+
+router.post("/upload", (req, res) => {
+    let storage = multer.diskStorage({
+        destination: (req, file, cb) => {
+            cb(null, './application/app/public/images/profilePics/');
+        },
+        filename: (req, file, cb) => {
+            cb(null, file.originalname)
+        }
+    });
+
+    var upload = multer({ storage: storage }).single('avatars');
+
+    upload(req, res, (err) => {
+        if(err){
+            console.log(err);
+        }else{
+            let profileObj = {};
+            profileObj.profilePics = req.file.originalname;
+            profileObj.userId = req.body.userId;
+            let profilePics = User.ProfilePics(profileObj);
+            profilePics.save((err, data) => {
+                if(err){
+                    res.send(err);
+                }else{
+                    res.send("Success");
+                }
+            })
+        }
+    });
 })
 
 // Get Logged in User Details
@@ -191,7 +226,10 @@ router.get("/userDetails/:id", (req, res) => {
             res.send("error");
             return;
         } else {
-            res.send(data);
+            // var base64 = data.profilePics.toString('base64');
+            // data.pics = base64;
+            // console.log(data);
+            res.send(data.profilePics);
         }
     });
 });

@@ -13,10 +13,6 @@ let user = {
     contactNo: { type: Number, required: true },
     email: { type: String, unique: true, required: true },
     varifyCode: Number,
-    // tokens: [{
-    //     access: { type: String, required: true },
-    //     token: { type: String, required: true }
-    // }],
     status: { type: Boolean, default: 1 }
 }
 let userSchema = new Schema(user, { versionKey: false });
@@ -27,7 +23,7 @@ users.Auth = mongoose.model("user", userSchema);
 let userDetails = {
     _id: { type: objectId, auto: true },
     userId: { type: objectId, required: true },
-    profilePics: String,
+    profilePics: { data: Buffer, contentType: String },
     wallet: Number,
     gender: String,
     address: String,
@@ -38,5 +34,15 @@ let userDetails = {
 
 let userDetailsSchema = new Schema(userDetails, { versionKey: false });
 users.Details = mongoose.model("userDetails", userDetailsSchema);
+
+//User Profile Pics Model
+let userProfilePics = {
+    _id: { type: objectId, auto: true },
+    userId: { type: objectId, required: true },
+    profilePics: String,
+}
+
+let userPicsSchema = new Schema(userProfilePics, { versionKey: false });
+users.ProfilePics = mongoose.model("userProfilePics", userPicsSchema);
 
 module.exports = users;
