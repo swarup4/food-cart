@@ -4,8 +4,12 @@ let jwt = require("jsonwebtoken");
 let fs = require('fs');
 let multer = require('multer');
 let User = require("../models/userModel");
+let logins = require("../helper/logins");
+// let event = require("../common/sessions");
 
 let router = express.Router();
+
+// let sess;
 
 // Get All User Information. This is Only for Admin User
 router.get("/", (req, res) => {
@@ -17,6 +21,9 @@ router.get("/", (req, res) => {
         } else {
             let decoded = jwt.verify(data[0].password, 'shhhhh');
             console.log(decoded);
+            // event.emit("getdata");
+            logins.checkUser(data);
+            console.log(logins.name);
             res.send(data);
         }
     });
@@ -48,7 +55,6 @@ router.post("/signup", (req, res) => {
                         res.send(err);
                         return;
                     } else {
-                        console.log("Success");
                         let decoded = jwt.verify(user.password, 'shhhhh');
                         res.send(user);
                     }
