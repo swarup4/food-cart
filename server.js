@@ -5,13 +5,18 @@ let path = require("path");
 let route = require("./server/router/web.js");
 let apiRoute = require("./server/router/api.js");
 let jwt = require("jsonwebtoken");
+let socketio = require('socket.io');
+let http = require('http');
 
 let app = express();
 let port = process.env.port || 3001;
 
-mongoose.connect('mongodb://localhost/shoping', { useMongoClient: true }, (err) => {
+mongoose.connect('mongodb://localhost/shoping').then(() => {
+    console.log("Connected");
+}).catch(err => {
     console.log("Error : " + err);
-});
+})
+
 mongoose.Promise = global.Promise;
 
 app.use(express.static(__dirname));
@@ -49,6 +54,11 @@ app.use(function (req, res, next) {
 app.use(apiRoute.order);
 
 
-app.listen(port, () => {
+let server = http.createServer(app);
+let io = socketio(server);
+io.on('connection', () => {
+    console.log("Socket is Working");
+});
+server.listen(port, () => {
     console.log("Server is running at : http://localhost:" + port);
 });

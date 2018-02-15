@@ -14,6 +14,7 @@ let Config = ($stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvi
         controllerAs: "scope"
     });
     $stateProvider.state('signup', {
+        parent: 'login',
         url: '/signup',
         templateUrl: './application/app/modules/signup/signup.html',
         controller: 'signupController',
@@ -30,6 +31,13 @@ let Config = ($stateProvider, $urlRouterProvider, $httpProvider, $mdThemingProvi
         url: 'order',
         templateUrl: './application/app/modules/order/order.html',
         controller: 'orderController',
+        controllerAs: "scope"
+    });
+    $stateProvider.state('orderSub', {
+        parent: 'order',
+        url: '/subOrder',
+        templateUrl: './application/app/modules/order/views/nested.html',
+        // controller: 'orderController',
         controllerAs: "scope"
     });
     $urlRouterProvider.otherwise("/");

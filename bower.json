@@ -19,6 +19,7 @@
   "dependencies": {
     "angular-ui-router": "^1.0.5",
     "bootstrap": "^3.3.7",
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "angular-socket-io": "^0.7.0"
   }
 }
