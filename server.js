@@ -62,3 +62,5 @@ io.on('connection', () => {
 server.listen(port, () => {
     console.log("Server is running at : http://localhost:" + port);
 });
+
+// node --inspect --debug-brk server.js
