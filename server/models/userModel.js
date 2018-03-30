@@ -12,12 +12,20 @@ let user = {
     password: { type: String, required: true },
     contactNo: { type: Number, required: true },
     email: { type: String, unique: true, required: true },
-    varifyCode: Number,
+    createdDate: Date,
     status: { type: Boolean, default: 1 }
 }
 let userSchema = new Schema(user, { versionKey: false });
+userSchema.pre('save', function(next) {
+	// get the current date
+	var currentDate = new Date();
+	// if created_at doesn't exist, add to that field
+    if (!this.createdDate){
+        this.createdDate = currentDate;
+    }
+    next();
+});
 users.Auth = mongoose.model("user", userSchema);
-
 
 //User Detals Model
 let userDetails = {

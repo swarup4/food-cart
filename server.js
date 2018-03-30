@@ -2,11 +2,15 @@ let express = require("express");
 let bodyParser = require("body-parser");
 let mongoose = require("mongoose");
 let path = require("path");
-let route = require("./server/router/web.js");
-let apiRoute = require("./server/router/api.js");
+let route = require("./server/routes/web.js");
+let apiRoute = require("./server/routes/api.js");
 let jwt = require("jsonwebtoken");
 let socketio = require('socket.io');
 let http = require('http');
+
+let config = require('./config');
+let conf = new config();
+console.log(conf.DB_URI);
 
 let app = express();
 let port = process.env.port || 3001;
