@@ -8,6 +8,7 @@ let logins = require("../helper/logins");
 // let event = require("../common/sessions");
 
 let router = express.Router();
+let counter = 10000;
 
 // let sess;
 
@@ -24,6 +25,9 @@ router.get("/", (req, res) => {
             // event.emit("getdata");
             logins.checkUser(data);
             console.log(logins.name);
+            if (counter-- === 0) {
+                cluster.worker.disconnect();
+            }
             res.send(data);
         }
     });
@@ -46,6 +50,9 @@ router.post("/signup", (req, res) => {
                 if (data.username == obj.username) {
                     userMsg = "Username is Already Exist";
                 }
+                if (counter-- === 0) {
+                    cluster.worker.disconnect();
+                }
                 res.send(emailMsg + " " + userMsg);
             } else {
                 let model = new User.Auth(obj);
@@ -56,6 +63,9 @@ router.post("/signup", (req, res) => {
                         return;
                     } else {
                         let decoded = jwt.verify(user.password, 'shhhhh');
+                        if (counter-- === 0) {
+                            cluster.worker.disconnect();
+                        }
                         res.send(user);
                     }
                 });
@@ -78,6 +88,9 @@ router.post("/checkExistUser", (req, res) => {
                 res.send("User is not Exist");
             } else {
                 if (user.status == true) {
+                    if (counter-- === 0) {
+                        cluster.worker.disconnect();
+                    }
                     res.send(user);
                 } else {
                     let obj = {};
